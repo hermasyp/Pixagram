@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def credentialsPropertiesFile = rootProject.file("credentials.properties")
+def credentialsProperties = new Properties()
+credentialsProperties.load(new FileInputStream(credentialsPropertiesFile))
+
+
+android {
+    compileSdkVersion app.compileSdk
+    buildToolsVersion app.buildToolsVersion
+    flavorDimensions 'default'
+
+    defaultConfig {
+        applicationId app.appId
+        minSdkVersion app.minSdk
+        targetSdkVersion app.targetSdk
+        versionCode app.appVersionCode
+        versionName app.appVersionName
+        testInstrumentationRunner app.testRunner
+    }
+
+    productFlavors {
+        production {
+            dimension = 'default'
+            buildConfigField("String", "BASE_URL", "\"https://pixabay.com/\"")
+            buildConfigField("String", "PIXABAY_KEY", credentialsProperties['PIXABAY_KEY'])
+        }
+        dev {
+            dimension = 'default'
+            buildConfigField("String", "BASE_URL", "\"https://pixabay.com/\"")
+            buildConfigField("String", "PIXABAY_KEY", credentialsProperties['PIXABAY_KEY'])
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidExtensions {
+        experimental = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.stdlib
+    implementation deps.support_lib.material
+    implementation deps.support_lib.appcompat
+    implementation deps.support_lib.legacysupport
+    implementation deps.support_lib.constraintlayout
+    implementation deps.support_lib.recyclerview
+    implementation deps.support_lib.cardview
+    implementation deps.support_lib.lifecycleExt
+    implementation deps.scalable.ssp
+    implementation deps.scalable.sdp
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
+    implementation deps.navigation.fragmentKtx
+    implementation deps.navigation.uiKtx
+    implementation deps.koin.koin
+    implementation deps.koin.koinViewModel
+    implementation deps.koin.koinScope
+    implementation deps.gson.gson
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.retrofitGson
+    implementation deps.retrofit.retrofitOkhttpLogging
+    implementation deps.room.core
+    implementation deps.coil.coil
+    implementation deps.coroutine.core
+    implementation deps.coroutine.android
+    implementation deps.android_test.junit
+    androidTestImplementation deps.android_test.androidJunit
+    androidTestImplementation deps.android_test.espressoCore
+    kapt deps.room.roomKapt
+
+}

@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion app.compileSdk
+    buildToolsVersion app.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion app.minSdk
+        targetSdkVersion app.targetSdk
+        versionCode app.appVersionCode
+        versionName app.appVersionName
+        testInstrumentationRunner app.testRunner
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation deps.kotlin.stdlib
+    implementation deps.support_lib.material
+    implementation deps.support_lib.appcompat
+    implementation deps.support_lib.legacysupport
+    implementation deps.support_lib.constraintlayout
+    implementation deps.support_lib.recyclerview
+    implementation deps.support_lib.cardview
+    implementation deps.support_lib.lifecycleExt
+    implementation deps.scalable.ssp
+    implementation deps.scalable.sdp
+    implementation deps.koin.koin
+    implementation deps.koin.koinViewModel
+    implementation deps.koin.koinScope
+    implementation deps.gson.gson
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.retrofitGson
+    implementation deps.retrofit.retrofitOkhttpLogging
+    implementation deps.room.core
+    implementation deps.coroutine.core
+    implementation deps.coroutine.android
+    implementation deps.android_test.junit
+    androidTestImplementation deps.android_test.androidJunit
+    androidTestImplementation deps.android_test.espressoCore
+    kapt deps.room.roomKapt
+
+}
