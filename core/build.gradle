@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+def credentialsPropertiesFile = rootProject.file("credentials.properties")
+def credentialsProperties = new Properties()
+credentialsProperties.load(new FileInputStream(credentialsPropertiesFile))
 
 android {
     compileSdkVersion app.compileSdk
@@ -16,7 +19,19 @@ android {
         testInstrumentationRunner app.testRunner
         consumerProguardFiles "consumer-rules.pro"
     }
-
+    flavorDimensions 'default'
+    productFlavors {
+        production {
+            dimension = 'default'
+            buildConfigField("String", "BASE_URL", "\"https://pixabay.com/\"")
+            buildConfigField("String", "PIXABAY_KEY", credentialsProperties['PIXABAY_KEY'])
+        }
+        dev {
+            dimension = 'default'
+            buildConfigField("String", "BASE_URL", "\"https://pixabay.com/\"")
+            buildConfigField("String", "PIXABAY_KEY", credentialsProperties['PIXABAY_KEY'])
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

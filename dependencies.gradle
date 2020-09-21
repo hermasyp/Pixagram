@@ -15,8 +15,8 @@ ext.app = app
 //start of versions
 ext.versions = [:]
 def versions = [:]
-versions.kotlin = '1.4.10'
-versions.coroutine = '1.3.9-native-mt'
+versions.kotlin = '1.3.72'
+versions.coroutine = '1.3.7'
 versions.leanback = '1.0.0'
 versions.appcompat = '1.2.0'
 versions.glide = '4.9.0'
