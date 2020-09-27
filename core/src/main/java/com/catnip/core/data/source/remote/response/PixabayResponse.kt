@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 data class PixabayResponse(
 
 	@field:SerializedName("hits")
-	val hits: List<FeedItemResponse?>? = null,
+	val hits: List<FeedItemResponse>,
 
 	@field:SerializedName("total")
-	val total: Int? = null,
+	val total: Int,
 
 	@field:SerializedName("totalHits")
-	val totalHits: Int? = null
+	val totalHits: Int
 )

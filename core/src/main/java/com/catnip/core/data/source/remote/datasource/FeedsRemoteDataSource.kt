@@ -17,11 +17,11 @@ Github : https://github.com/hermasyp
 
 class FeedsRemoteDataSource(private val apiService: ApiService) {
 
-    suspend fun getFeeds(category: String, page: Int): Flow<ApiResponse<List<FeedItemResponse?>?>> {
+    suspend fun getFeeds(): Flow<ApiResponse<List<FeedItemResponse>>> {
         //get data from remote api
         return flow {
             try {
-                val response = apiService.getFeeds(category = category, page = page)
+                val response = apiService.getFeeds()
                 val dataArray = response.hits
                 if (dataArray!!.isNotEmpty()) {
                     emit(ApiResponse.Success(response.hits))

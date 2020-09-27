@@ -15,70 +15,70 @@ data class FeedItemEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "id")
-    val id: Int? = null,
+    val id: Int,
 
     @ColumnInfo(name = "webformatHeight")
-    val webformatHeight: Int? = null,
+    val webformatHeight: Int,
 
     @ColumnInfo(name = "imageWidth")
-    val imageWidth: Int? = null,
+    val imageWidth: Int,
 
     @ColumnInfo(name = "favorites")
-    val favorites: Int? = null,
+    val favorites: Int,
 
     @ColumnInfo(name = "previewHeight")
-    val previewHeight: Int? = null,
+    val previewHeight: Int,
 
     @ColumnInfo(name = "webformatURL")
-    val webformatURL: String? = null,
+    val webformatURL: String,
 
     @ColumnInfo(name = "userImageURL")
-    val userImageURL: String? = null,
+    val userImageURL: String,
 
     @ColumnInfo(name = "previewURL")
-    val previewURL: String? = null,
+    val previewURL: String,
 
     @ColumnInfo(name = "comments")
-    val comments: Int? = null,
+    val comments: Int,
 
     @ColumnInfo(name = "type")
-    val type: String? = null,
+    val type: String,
 
     @ColumnInfo(name = "imageHeight")
-    val imageHeight: Int? = null,
+    val imageHeight: Int,
 
     @ColumnInfo(name = "tags")
-    val tags: String? = null,
+    val tags: String,
 
     @ColumnInfo(name = "previewWidth")
-    val previewWidth: Int? = null,
+    val previewWidth: Int,
 
     @ColumnInfo(name = "downloads")
-    val downloads: Int? = null,
+    val downloads: Int,
 
     @ColumnInfo(name = "user_id")
-    val userId: Int? = null,
+    val userId: Int,
 
     @ColumnInfo(name = "largeImageURL")
-    val largeImageURL: String? = null,
+    val largeImageURL: String,
 
     @ColumnInfo(name = "pageURL")
-    val pageURL: String? = null,
+    val pageURL: String,
 
     @ColumnInfo(name = "imageSize")
-    val imageSize: Int? = null,
+    val imageSize: Int,
 
     @ColumnInfo(name = "webformatWidth")
-    val webformatWidth: Int? = null,
+    val webformatWidth: Int,
 
     @ColumnInfo(name = "user")
-    val user: String? = null,
+    val user: String,
 
     @ColumnInfo(name = "views")
-    val views: Int? = null,
+    val views: Int,
 
     @ColumnInfo(name = "likes")
-    val likes: Int? = null,
+    val likes: Int,
 
     @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false

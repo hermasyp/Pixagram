@@ -5,68 +5,68 @@ import com.google.gson.annotations.SerializedName
 data class FeedItemResponse(
 
 	@field:SerializedName("webformatHeight")
-	val webformatHeight: Int? = null,
+	val webformatHeight: Int,
 
 	@field:SerializedName("imageWidth")
-	val imageWidth: Int? = null,
+	val imageWidth: Int,
 
 	@field:SerializedName("favorites")
-	val favorites: Int? = null,
+	val favorites: Int,
 
 	@field:SerializedName("previewHeight")
-	val previewHeight: Int? = null,
+	val previewHeight: Int,
 
 	@field:SerializedName("webformatURL")
-	val webformatURL: String? = null,
+	val webformatURL: String,
 
 	@field:SerializedName("userImageURL")
-	val userImageURL: String? = null,
+	val userImageURL: String,
 
 	@field:SerializedName("previewURL")
-	val previewURL: String? = null,
+	val previewURL: String,
 
 	@field:SerializedName("comments")
-	val comments: Int? = null,
+	val comments: Int,
 
 	@field:SerializedName("type")
-	val type: String? = null,
+	val type: String,
 
 	@field:SerializedName("imageHeight")
-	val imageHeight: Int? = null,
+	val imageHeight: Int,
 
 	@field:SerializedName("tags")
-	val tags: String? = null,
+	val tags: String,
 
 	@field:SerializedName("previewWidth")
-	val previewWidth: Int? = null,
+	val previewWidth: Int,
 
 	@field:SerializedName("downloads")
-	val downloads: Int? = null,
+	val downloads: Int,
 
 	@field:SerializedName("user_id")
-	val userId: Int? = null,
+	val userId: Int,
 
 	@field:SerializedName("largeImageURL")
-	val largeImageURL: String? = null,
+	val largeImageURL: String,
 
 	@field:SerializedName("pageURL")
-	val pageURL: String? = null,
+	val pageURL: String,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("imageSize")
-	val imageSize: Int? = null,
+	val imageSize: Int,
 
 	@field:SerializedName("webformatWidth")
-	val webformatWidth: Int? = null,
+	val webformatWidth: Int,
 
 	@field:SerializedName("user")
-	val user: String? = null,
+	val user: String,
 
 	@field:SerializedName("views")
-	val views: Int? = null,
+	val views: Int,
 
 	@field:SerializedName("likes")
-	val likes: Int? = null
+	val likes: Int
 )
