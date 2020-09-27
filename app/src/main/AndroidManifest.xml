@@ -3,6 +3,7 @@
     package="com.catnip.pixagram">
 
     <application
+        android:name=".app.PixagramApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
