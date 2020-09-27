@@ -15,6 +15,15 @@ android {
         versionName app.appVersionName
         testInstrumentationRunner app.testRunner
     }
+    flavorDimensions 'default'
+    productFlavors {
+        production {
+
+        }
+        dev {
+
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -62,6 +71,7 @@ dependencies {
     implementation deps.coroutine.core
     implementation deps.coroutine.android
     implementation deps.android_test.junit
+    implementation project(path: ':core')
     androidTestImplementation deps.android_test.androidJunit
     androidTestImplementation deps.android_test.espressoCore
     kapt deps.room.roomKapt
