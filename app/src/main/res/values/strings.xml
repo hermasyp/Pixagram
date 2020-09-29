@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Pixagram</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_feeds">Feeds</string>
+    <string name="title_favorites">Favorites</string>
     <string name="text_cd_profile_picture">Profile Picture</string>
     <string name="text_cd_feed_image">Content Images</string>
     <string name="text_cd_favorite">Set Favorite</string>

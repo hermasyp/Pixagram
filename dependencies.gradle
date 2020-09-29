@@ -84,6 +84,7 @@ deps.retrofit = retrofit
 
 def room = [:]
 room.core = "androidx.room:room-runtime:$versions.room"
+room.ktx = "androidx.room:room-ktx:$versions.room"
 room.roomKapt = "androidx.room:room-compiler:$versions.room"
 deps.room = room
 

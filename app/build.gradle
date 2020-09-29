@@ -46,6 +46,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin.stdlib
+    implementation deps.coreKtx
     implementation deps.support_lib.material
     implementation deps.support_lib.appcompat
     implementation deps.support_lib.legacysupport
@@ -67,6 +68,7 @@ dependencies {
     implementation deps.retrofit.retrofitGson
     implementation deps.retrofit.retrofitOkhttpLogging
     implementation deps.room.core
+    implementation deps.room.ktx
     implementation deps.coil.coil
     implementation deps.coroutine.core
     implementation deps.coroutine.android

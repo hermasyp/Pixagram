@@ -1,4 +1,4 @@
-package com.catnip.pixagram.ui.adapter
+package com.catnip.pixagram.feature.adapter
 
 import android.view.LayoutInflater
 import android.view.View

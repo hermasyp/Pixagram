@@ -23,7 +23,7 @@ class FeedsRemoteDataSource(private val apiService: ApiService) {
             try {
                 val response = apiService.getFeeds()
                 val dataArray = response.hits
-                if (dataArray!!.isNotEmpty()) {
+                if (dataArray.isNotEmpty()) {
                     emit(ApiResponse.Success(response.hits))
                 } else {
                     emit(ApiResponse.Empty)
