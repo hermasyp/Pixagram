@@ -15,8 +15,8 @@ class FeedsLocalDataSource(private val feedsDao: FeedsDao) {
 
     suspend fun insertFeeds(feeds: List<FeedItemEntity>) = feedsDao.insertFeeds(feeds)
 
-    fun setFavoriteFeed(feed: FeedItemEntity, isFavorited: Boolean) {
-        feed.isFavorite = isFavorited
+    fun setFavoriteFeed(feed: FeedItemEntity, isFavorite: Boolean) {
+        feed.isFavorite = isFavorite
         feedsDao.updateFavoriteFeeds(feed)
     }
 }

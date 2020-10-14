@@ -73,6 +73,7 @@ dependencies {
     implementation deps.coroutine.core
     implementation deps.coroutine.android
     implementation deps.android_test.junit
+    implementation deps.livedata
     implementation project(path: ':core')
     androidTestImplementation deps.android_test.androidJunit
     androidTestImplementation deps.android_test.espressoCore

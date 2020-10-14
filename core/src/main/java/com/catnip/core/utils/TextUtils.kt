@@ -6,6 +6,8 @@ Github : https://github.com/hermasyp
  **/
 object TextUtils {
     fun getTags(tag : String) : String{
-        return tag.split(",").joinToString (separator = "#")
+        return tag.split(",").joinToString(separator = " ") {
+            "#".plus(it.replace("\\s".toRegex(), ""))
+        }
     }
 }

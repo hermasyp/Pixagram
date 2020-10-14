@@ -32,5 +32,5 @@ data class Feed(
     val user: String,
     val views: Int,
     val likes: Int,
-    val isFavorite: Boolean = false
+    var isFavorite: Boolean = false
 ) : Parcelable

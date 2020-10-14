@@ -1,10 +1,15 @@
 package com.catnip.pixagram.feature.feeds
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.catnip.core.domain.model.Feed
 import com.catnip.core.domain.usecase.FeedsUseCase
 
-class FeedsViewModel(feedsUseCase: FeedsUseCase) : ViewModel() {
+class FeedsViewModel(private val feedsUseCase: FeedsUseCase) : ViewModel() {
+    val feeds = feedsUseCase.getFeeds().asLiveData()
+
+    fun setFavoriteFeed(feed : Feed, isFavorite:Boolean) =
+        feedsUseCase.setFavoriteFeed(feed,isFavorite)
+
 
 }

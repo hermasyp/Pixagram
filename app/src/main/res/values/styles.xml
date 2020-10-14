@@ -22,23 +22,5 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="PixabayText.Primary" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/md_grey_300</item>
-    </style>
 
-    <style name="PixabayText.Primary.16" parent="PixabayText.Primary">
-        <item name="android:textSize">@dimen/_16ssp</item>
-    </style>
-
-    <style name="PixabayText.Secondary" parent="Widget.AppCompat.TextView">
-        <item name="android:textColor">@color/md_grey_500</item>
-    </style>
-
-    <style name="PixabayText.Secondary.14" parent="PixabayText.Secondary">
-        <item name="android:textSize">@dimen/_14ssp</item>
-    </style>
-
-    <style name="PixabayText.Secondary.12" parent="PixabayText.Secondary">
-        <item name="android:textSize">@dimen/_12ssp</item>
-    </style>
 </resources>

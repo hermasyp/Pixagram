@@ -13,7 +13,6 @@ interface ApiService {
     @GET("api")
     suspend fun getFeeds(
         @Query("key") key: String = BuildConfig.PIXABAY_KEY,
-        @Query("category") category: String = "science",
         @Query("per_page") perPage: Int = 100
     ): PixabayResponse
 
