@@ -1,7 +1,8 @@
-plugins {
-    id 'com.android.dynamic-feature'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -15,21 +16,68 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    flavorDimensions 'default'
+    productFlavors {
+        production {
 
+        }
+        dev {
+
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidExtensions {
+        experimental = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
-    implementation project(":app")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-    implementation 'androidx.core:core-ktx:1.2.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.stdlib
+    implementation deps.coreKtx
+    implementation deps.support_lib.material
+    implementation deps.support_lib.appcompat
+    implementation deps.support_lib.legacysupport
+    implementation deps.support_lib.constraintlayout
+    implementation deps.support_lib.recyclerview
+    implementation deps.support_lib.cardview
+    implementation deps.support_lib.lifecycleExt
+    implementation deps.scalable.ssp
+    implementation deps.scalable.sdp
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
+    implementation deps.navigation.fragmentKtx
+    implementation deps.navigation.uiKtx
+    implementation deps.koin.koin
+    implementation deps.koin.koinViewModel
+    implementation deps.koin.koinScope
+    implementation deps.gson.gson
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.retrofitGson
+    implementation deps.retrofit.retrofitOkhttpLogging
+    implementation deps.room.core
+    implementation deps.room.ktx
+    implementation deps.coil.coil
+    implementation deps.coroutine.core
+    implementation deps.coroutine.android
+    implementation deps.android_test.junit
+    implementation deps.livedata
+    implementation project(path: ':core')
+    implementation project(path: ':app')
+    androidTestImplementation deps.android_test.androidJunit
+    androidTestImplementation deps.android_test.espressoCore
+    kapt deps.room.roomKapt
+
 }

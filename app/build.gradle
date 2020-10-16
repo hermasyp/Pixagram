@@ -61,6 +61,7 @@ dependencies {
     implementation deps.navigation.ui
     implementation deps.navigation.fragmentKtx
     implementation deps.navigation.uiKtx
+    implementation deps.navigation.dynamicmodule
     implementation deps.koin.koin
     implementation deps.koin.koinViewModel
     implementation deps.koin.koinScope
