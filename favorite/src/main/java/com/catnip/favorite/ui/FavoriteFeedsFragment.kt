@@ -8,8 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.catnip.core.domain.model.Feed
+import com.catnip.core.domain.viewparam.FeedViewParam
 import com.catnip.core.ui.adapter.FeedsAdapter
+import com.catnip.core.utils.ShareUtils
 import com.catnip.favorite.R
 import com.catnip.favorite.di.favoriteModule
 import kotlinx.android.synthetic.main.fragment_favorite_feeds.*
@@ -54,12 +55,15 @@ class FavoriteFeedsFragment : Fragment() {
 
     private fun setupList() {
         feedsAdapter = FeedsAdapter(object : FeedsAdapter.FeedsAdapterClickListener {
-            override fun onItemClicked(feed: Feed, position: Int) {
+            override fun onItemClicked(feed: FeedViewParam, position: Int) {
                 Toast.makeText(context, feed.id, Toast.LENGTH_SHORT).show()
             }
 
-            override fun onFavoriteIconClicked(feed: Feed, position: Int) {
+            override fun onFavoriteIconClicked(feed: FeedViewParam, position: Int) {
                 setFeedsToFavorite(feed, !feed.isFavorite)
+            }
+            override fun onShareClicked(feed: FeedViewParam, position: Int) {
+                ShareUtils.sendLink(context,feed.largeImageURL)
             }
         })
         with(rv_feeds) {
@@ -69,7 +73,7 @@ class FavoriteFeedsFragment : Fragment() {
         }
     }
 
-    private fun setFeedsToFavorite(feed: Feed, isFavorite: Boolean) {
+    private fun setFeedsToFavorite(feed: FeedViewParam, isFavorite: Boolean) {
         favoriteFeedsViewModel.setFavoriteFeed(feed, isFavorite)
     }
 

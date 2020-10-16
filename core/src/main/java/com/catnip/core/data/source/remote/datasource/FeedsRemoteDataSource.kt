@@ -3,8 +3,7 @@ package com.catnip.core.data.source.remote.datasource
 import android.util.Log
 import com.catnip.core.data.source.remote.network.ApiResponse
 import com.catnip.core.data.source.remote.network.ApiService
-import com.catnip.core.data.source.remote.response.FeedItemResponse
-import com.catnip.core.data.source.remote.response.PixabayResponse
+import com.catnip.core.data.source.remote.entity.FeedResponseEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -17,7 +16,7 @@ Github : https://github.com/hermasyp
 
 class FeedsRemoteDataSource(private val apiService: ApiService) {
 
-    suspend fun getFeeds(): Flow<ApiResponse<List<FeedItemResponse>>> {
+    suspend fun getFeeds(): Flow<ApiResponse<List<FeedResponseEntity>>> {
         //get data from remote api
         return flow {
             try {

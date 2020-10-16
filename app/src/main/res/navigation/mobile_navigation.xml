@@ -7,15 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.catnip.pixagram.feature.feeds.FeedsFragment"
-        android:label="@string/title_feeds"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.catnip.feeds.FeedsFragment"
+        android:label="@string/title_feeds" />
     <fragment
         app:moduleName="favorite"
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_favorite"
         android:name="com.catnip.favorite.ui.FavoriteFeedsFragment"
-        android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorite_feeds" />
+        android:label="@string/title_favorites" />
 
 
 

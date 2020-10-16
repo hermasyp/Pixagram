@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.catnip.core.R
-import com.catnip.core.domain.model.Feed
+import com.catnip.core.domain.viewparam.FeedViewParam
 import com.catnip.core.utils.TextUtils
 import kotlinx.android.synthetic.main.item_feed.view.*
 import java.util.*
@@ -23,7 +23,7 @@ Github : https://github.com/hermasyp
 class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
     RecyclerView.Adapter<FeedsAdapter.FeedsViewHolder>() {
 
-    private var data: List<Feed> = ArrayList()
+    private var data: List<FeedViewParam> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedsViewHolder {
         return FeedsViewHolder(
@@ -39,7 +39,7 @@ class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
     override fun onBindViewHolder(holder: FeedsViewHolder, position: Int) =
         holder.bind(data[position],position)
 
-    fun swapData(data: List<Feed>) {
+    fun swapData(data: List<FeedViewParam>) {
         this.data = data
         notifyDataSetChanged()
     }
@@ -52,7 +52,7 @@ class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
 
     class FeedsViewHolder(itemView: View, val callback: FeedsAdapterClickListener?) :
         RecyclerView.ViewHolder(itemView) {
-        fun bind(item: Feed,position: Int) = with(itemView) {
+        fun bind(item: FeedViewParam, position: Int) = with(itemView) {
             iv_profile_icon.load(item.userImageURL) {
                 crossfade(true)
                 placeholder(R.drawable.ic_profile_placeholder)
@@ -90,12 +90,16 @@ class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
             iv_favorite_feed.setOnClickListener {
                 callback?.onFavoriteIconClicked(item,position)
             }
+            iv_share_img.setOnClickListener {
+                callback?.onShareClicked(item,position)
+            }
         }
     }
 
 
     interface FeedsAdapterClickListener {
-        fun onItemClicked(feed: Feed, position: Int)
-        fun onFavoriteIconClicked(feed: Feed, position: Int)
+        fun onItemClicked(feed: FeedViewParam, position: Int)
+        fun onFavoriteIconClicked(feed: FeedViewParam, position: Int)
+        fun onShareClicked(feed: FeedViewParam, position: Int)
     }
 }

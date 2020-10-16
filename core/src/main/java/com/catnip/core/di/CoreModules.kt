@@ -7,7 +7,8 @@ import com.catnip.core.data.source.local.datasource.FeedsLocalDataSource
 import com.catnip.core.data.source.local.room.FeedsDatabase
 import com.catnip.core.data.source.remote.datasource.FeedsRemoteDataSource
 import com.catnip.core.data.source.remote.network.ApiService
-import com.catnip.core.domain.repository.IFeedsRepository
+import com.catnip.core.data.repository.IFeedsRepository
+import com.catnip.core.data.source.pref.datasource.PrefDataSource
 import com.catnip.core.utils.AppExecutors
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -52,9 +53,11 @@ val networkModule = module {
 val repositoryModule = module {
     single { FeedsLocalDataSource(get()) }
     single { FeedsRemoteDataSource(get()) }
+    single { PrefDataSource(get()) }
     factory { AppExecutors() }
     single<IFeedsRepository> {
         FeedsRepository(
+            get(),
             get(),
             get(),
             get()

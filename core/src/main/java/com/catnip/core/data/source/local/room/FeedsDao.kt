@@ -1,7 +1,7 @@
 package com.catnip.core.data.source.local.room
 
 import androidx.room.*
-import com.catnip.core.data.source.local.entity.FeedItemEntity
+import com.catnip.core.data.source.local.entity.FeedLocalEntity
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -12,15 +12,21 @@ Github : https://github.com/hermasyp
 interface FeedsDao {
 
     @Query("SELECT * FROM FEEDS")
-    fun getAllFeeds(): Flow<List<FeedItemEntity>>
+    fun getAllFeeds(): Flow<List<FeedLocalEntity>>
 
     @Query("SELECT * FROM FEEDS where isFavorite = 1")
-    fun getFavoriteFeeds(): Flow<List<FeedItemEntity>>
+    fun getFavoriteFeeds(): Flow<List<FeedLocalEntity>>
+
+    @Query("SELECT * FROM FEEDS where  tags LIKE '%' || :query || '%'")
+    fun searchFeeds(query : String): Flow<List<FeedLocalEntity>>
+
+    @Query("SELECT * FROM FEEDS where id = :idFeed")
+    fun getDetailFeeds(idFeed : String): Flow<FeedLocalEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFeeds(feeds: List<FeedItemEntity>)
+    suspend fun insertFeeds(feeds: List<FeedLocalEntity>)
 
     @Update
-    fun updateFavoriteFeeds(feed: FeedItemEntity)
+    fun updateFavoriteFeeds(feed: FeedLocalEntity)
 
 }
