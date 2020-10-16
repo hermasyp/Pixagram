@@ -59,7 +59,7 @@ class FeedsFragment : Fragment() {
     private fun setupList() {
         feedsAdapter = FeedsAdapter(object : FeedsAdapter.FeedsAdapterClickListener {
             override fun onItemClicked(feed: FeedViewParam, position: Int) {
-                Toast.makeText(context, feed.id, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, feed.id.toString(), Toast.LENGTH_SHORT).show()
             }
 
             override fun onFavoriteIconClicked(feed: FeedViewParam, position: Int) {
