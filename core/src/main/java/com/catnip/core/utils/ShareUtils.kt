@@ -11,7 +11,7 @@ object ShareUtils {
     fun sendLink(context: Context?, link: String?) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, "Check this Image from Pixagram by Pixabay API.$link")
+            putExtra(Intent.EXTRA_TEXT, "Check this Image from Pixagram by Pixabay API. $link")
             type = "text/plain"
         }
 
