@@ -11,9 +11,11 @@ Github : https://github.com/hermasyp
 interface FeedsUseCase {
     fun getFeeds(): Flow<Resource<List<FeedViewParam>>>
 
+    fun getSearchFeeds(keywords: String): Flow<Resource<List<FeedViewParam>>>
+
     fun getFavoriteFeeds(): Flow<List<FeedViewParam>>
 
-    fun getDetailFeed(idFeed : String): Flow<FeedViewParam>
+    fun getDetailFeed(idFeed: String): Flow<FeedViewParam>
 
     fun setFavoriteFeed(feed: FeedViewParam, state: Boolean)
 }

@@ -5,4 +5,5 @@
     <string name="default_title_empty_state">No Data Available</string>
     <string name="default_title_error_state">Error while fetching data</string>
     <string name="default_message_error_state">Please try again later</string>
+    <string name="search_title">Search Feed by Tags</string>
 </resources>

@@ -12,8 +12,7 @@ import com.catnip.core.utils.AppExecutors
 import com.catnip.core.utils.DataMapper
 import com.catnip.core.utils.getCurrentDateTime
 import com.catnip.core.utils.toFormattedString
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 
 /**
 Written with love by Muhammad Hermas Yuda Pamungkas
@@ -67,9 +66,33 @@ class FeedsRepository(
         }
     }
 
-    override fun searchFeeds(query: String): Flow<List<FeedViewParam>> {
-        return localDataSource.searchFeeds(query).map {
-            DataMapper.mapEntitiesToViewParams(it)
+    override fun searchFeeds(keywords: String): Flow<Resource<List<FeedViewParam>>> = flow {
+        emit(Resource.Loading())
+        val response = remoteDataSource.getSearchFeeds(keywords)
+        when (val apiResponse = response.first()) {
+            is ApiResponse.Success -> {
+                emitAll(flow {
+                    apiResponse.data.map {
+                        Resource.Success(
+                            it
+                        )
+                    }
+                })
+            }
+            is ApiResponse.Empty -> {
+                emitAll(flow {
+                    Resource.Success(
+                        listOf<FeedViewParam>()
+                    )
+                })
+            }
+            is ApiResponse.Error -> {
+                emit(
+                    Resource.Error(
+                        apiResponse.errorMessage
+                    )
+                )
+            }
         }
     }
 

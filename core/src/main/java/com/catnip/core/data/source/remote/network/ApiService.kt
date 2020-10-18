@@ -20,7 +20,6 @@ interface ApiService {
     suspend fun searchFeeds(
         @Query("key") key: String = BuildConfig.PIXABAY_KEY,
         @Query("q") keywords: String,
-        @Query("page") page: Int,
         @Query("per_page") perPage: Int = 100
     ): PixabayResponseEntity
 }

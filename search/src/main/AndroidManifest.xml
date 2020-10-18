@@ -2,4 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.catnip.search">
 
+    <application>
+        <activity android:name=".ui.SearchFeedsActivity"></activity>
+    </application>
+
 </manifest>

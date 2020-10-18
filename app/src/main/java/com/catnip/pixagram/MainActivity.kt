@@ -1,6 +1,9 @@
 package com.catnip.pixagram
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +11,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.catnip.search.ui.SearchFeedsActivity
+import kotlinx.android.synthetic.main.layout_custom_toolbar.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,5 +34,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupToolbar(){
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar?.setCustomView(R.layout.layout_custom_toolbar)
+        iv_search?.setOnClickListener {
+            startActivity(Intent(this,SearchFeedsActivity::class.java))
+        }
     }
 }

@@ -16,7 +16,7 @@ interface IFeedsRepository {
 
     fun getDetailFeed(idFeed: String): Flow<FeedViewParam>
 
-    fun searchFeeds(query: String): Flow<List<FeedViewParam>>
+    fun searchFeeds(query: String): Flow<Resource<List<FeedViewParam>>>
 
     fun setFavoriteFeed(feed: FeedViewParam, state: Boolean)
 }
