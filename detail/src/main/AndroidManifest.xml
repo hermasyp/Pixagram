@@ -4,7 +4,7 @@
 
 
     <application>
-        <activity android:name=".DetailFeedActivity" />
+        <activity android:name=".ui.DetailFeedActivity" />
     </application>
 
 </manifest>

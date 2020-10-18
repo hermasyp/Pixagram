@@ -4,8 +4,9 @@ import android.app.Application
 import com.catnip.core.di.databaseModule
 import com.catnip.core.di.networkModule
 import com.catnip.core.di.repositoryModule
+import com.catnip.detail.di.detailFeedModule
+import com.catnip.feeds.di.feedsModule
 import com.catnip.pixagram.di.useCaseModule
-import com.catnip.pixagram.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -27,7 +28,8 @@ class PixagramApp : Application() {
                     networkModule,
                     repositoryModule,
                     useCaseModule,
-                    viewModelModule
+                    feedsModule,
+                    detailFeedModule
                 )
             )
         }

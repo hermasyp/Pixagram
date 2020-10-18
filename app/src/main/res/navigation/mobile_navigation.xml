@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.catnip.feeds.FeedsFragment"
+        android:name="com.catnip.feeds.ui.FeedsFragment"
         android:label="@string/title_feeds" />
     <fragment
         app:moduleName="favorite"

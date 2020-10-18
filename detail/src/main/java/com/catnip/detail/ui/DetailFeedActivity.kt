@@ -1,7 +1,8 @@
-package com.catnip.detail
+package com.catnip.detail.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.catnip.detail.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFeedActivity : AppCompatActivity() {

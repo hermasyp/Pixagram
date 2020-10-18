@@ -1,4 +1,4 @@
-package com.catnip.feeds
+package com.catnip.feeds.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.catnip.core.data.source.resource.Resource
 import com.catnip.core.domain.viewparam.FeedViewParam
 import com.catnip.core.ui.adapter.FeedsAdapter
+import com.catnip.core.ui.widget.ContentStateView
 import com.catnip.core.utils.ShareUtils
+import com.catnip.feeds.R
 import kotlinx.android.synthetic.main.fragment_feeds.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FeedsFragment : Fragment() {
+class FeedsFragment : Fragment(), ContentStateView.ContentStateViewListener {
 
 
     private val feedsViewModel: FeedsViewModel by viewModel()
@@ -32,6 +34,7 @@ class FeedsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
+            setupView()
             setupList()
             observeData()
         }
@@ -41,33 +44,43 @@ class FeedsFragment : Fragment() {
         feedsViewModel.feeds.observe(viewLifecycleOwner, Observer { feeds ->
             if (feeds != null) {
                 when (feeds) {
-                    is Resource.Loading -> progress_bar.visibility = View.VISIBLE
+                    is Resource.Loading -> csv_feeds?.setState(ContentStateView.STATE_LOADING)
                     is Resource.Success -> {
-                        progress_bar.visibility = View.GONE
-                        feedsAdapter.swapData(feeds.data!!)
+                        if (!feeds.data.isNullOrEmpty()) {
+                            csv_feeds?.setState(ContentStateView.STATE_NORMAL)
+                            feeds.data?.let {
+                                feedsAdapter.swapData(it)
+                            }
+                        } else {
+                            csv_feeds?.setState(ContentStateView.STATE_EMPTY)
+                        }
                     }
                     is Resource.Error -> {
-                        progress_bar.visibility = View.GONE
-                        Toast.makeText(context, "Error While Load Data", Toast.LENGTH_SHORT)
-                            .show()
+                        csv_feeds?.setState(ContentStateView.STATE_ERROR)
                     }
                 }
             }
         })
     }
 
+    private fun setupView() {
+        csv_feeds?.setListener(this)
+        csv_feeds?.useDefaultConfig()
+    }
+
     private fun setupList() {
         feedsAdapter = FeedsAdapter(object : FeedsAdapter.FeedsAdapterClickListener {
             override fun onItemClicked(feed: FeedViewParam, position: Int) {
+                //todo : to detail
                 Toast.makeText(context, feed.id.toString(), Toast.LENGTH_SHORT).show()
             }
 
             override fun onFavoriteIconClicked(feed: FeedViewParam, position: Int) {
-                setFeedsToFavorite(feed,!feed.isFavorite)
+                setFeedsToFavorite(feed, !feed.isFavorite)
             }
 
             override fun onShareClicked(feed: FeedViewParam, position: Int) {
-                ShareUtils.sendLink(context,feed.largeImageURL)
+                ShareUtils.sendLink(context, feed.largeImageURL)
             }
         })
         with(rv_feeds) {
@@ -79,5 +92,9 @@ class FeedsFragment : Fragment() {
 
     private fun setFeedsToFavorite(feed: FeedViewParam, isFavorite: Boolean) {
         feedsViewModel.setFavoriteFeed(feed, isFavorite)
+    }
+
+    override fun onStateChanged(isContentVisible: Boolean, state: Int) {
+        rv_feeds?.visibility = if (isContentVisible) View.VISIBLE else View.GONE
     }
 }

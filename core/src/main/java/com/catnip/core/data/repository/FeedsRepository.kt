@@ -39,9 +39,11 @@ class FeedsRepository(
                 remoteDataSource.getFeeds()
 
             //todo compare timestamp , fetch per one day
-            override fun shouldFetch(data: List<FeedViewParam>?): Boolean =
-                (data == null || data.isEmpty()) && !prefDataSource.lastFetch
-                    .equals(getCurrentDateTime().toFormattedString("yyyy/MM/dd"),true)
+            override fun shouldFetch(data: List<FeedViewParam>?): Boolean {
+                val lastFetch = prefDataSource.lastFetch
+                val currentDate = getCurrentDateTime().toFormattedString("yyyy/MM/dd")
+                return data.isNullOrEmpty() || !lastFetch.equals(currentDate, true)
+            }
 
             override suspend fun saveCallResult(data: List<FeedResponseEntity>) {
                 val feedList = DataMapper.mapResponsesToEntities(data)

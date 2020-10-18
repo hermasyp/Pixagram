@@ -10,6 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.catnip.core.domain.viewparam.FeedViewParam
 import com.catnip.core.ui.adapter.FeedsAdapter
+import com.catnip.core.ui.widget.ContentStateView
+import com.catnip.core.ui.widget.ContentStateViewConfig
+import com.catnip.core.ui.widget.ContentStateViewMessage
 import com.catnip.core.utils.ShareUtils
 import com.catnip.favorite.R
 import com.catnip.favorite.di.favoriteModule
@@ -18,7 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 
-class FavoriteFeedsFragment : Fragment() {
+class FavoriteFeedsFragment : Fragment(), ContentStateView.ContentStateViewListener {
 
 
     private val favoriteFeedsViewModel: FavoriteFeedsViewModel by viewModel()
@@ -41,15 +44,40 @@ class FavoriteFeedsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
+            setupView()
             setupList()
             observeData()
         }
     }
 
+    private fun setupView() {
+        csv_feeds?.setListener(this)
+        csv_feeds?.useDefaultConfig()
+        csv_feeds?.addConfig(
+            ContentStateView.STATE_EMPTY, ContentStateViewConfig(
+                isShowProgress = false,
+                isShowTitle = true,
+                isShowSubtitle = true,
+                contentStateViewMessage = ContentStateViewMessage(
+                    context?.getString(R.string.title_empty_favorite),
+                    context?.getString(R.string.msg_empty_favorite)
+                )
+            )
+        )
+    }
+
+    override fun onStateChanged(isContentVisible: Boolean, state: Int) {
+        rv_feeds?.visibility = if (isContentVisible) View.VISIBLE else View.GONE
+    }
+
     private fun observeData() {
         favoriteFeedsViewModel.favoritedFeeds.observe(viewLifecycleOwner, Observer { feeds ->
-            feedsAdapter.swapData(feeds)
-            progress_bar.visibility = if (feeds.isNotEmpty()) View.GONE else View.VISIBLE
+            if (!feeds.isNullOrEmpty()) {
+                csv_feeds?.setState(ContentStateView.STATE_NORMAL)
+                feedsAdapter.swapData(feeds)
+            } else {
+                csv_feeds?.setState(ContentStateView.STATE_EMPTY)
+            }
         })
     }
 
@@ -62,8 +90,9 @@ class FavoriteFeedsFragment : Fragment() {
             override fun onFavoriteIconClicked(feed: FeedViewParam, position: Int) {
                 setFeedsToFavorite(feed, !feed.isFavorite)
             }
+
             override fun onShareClicked(feed: FeedViewParam, position: Int) {
-                ShareUtils.sendLink(context,feed.largeImageURL)
+                ShareUtils.sendLink(context, feed.largeImageURL)
             }
         })
         with(rv_feeds) {

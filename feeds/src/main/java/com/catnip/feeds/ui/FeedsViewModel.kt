@@ -1,4 +1,4 @@
-package com.catnip.feeds
+package com.catnip.feeds.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
