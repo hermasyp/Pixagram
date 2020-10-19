@@ -1,6 +1,6 @@
 package com.catnip.core.data.source.local.datasource
 
-import com.catnip.core.data.source.local.entity.FeedItemEntity
+import com.catnip.core.data.source.local.entity.FeedLocalEntity
 import com.catnip.core.data.source.local.room.FeedsDao
 import kotlinx.coroutines.flow.Flow
 
@@ -9,14 +9,18 @@ Written with love by Muhammad Hermas Yuda Pamungkas
 Github : https://github.com/hermasyp
  **/
 class FeedsLocalDataSource(private val feedsDao: FeedsDao) {
-    fun getAllFeeds(): Flow<List<FeedItemEntity>> = feedsDao.getAllFeeds()
+    fun getAllFeeds(): Flow<List<FeedLocalEntity>> = feedsDao.getAllFeeds()
 
-    fun getFavoriteFeeds(): Flow<List<FeedItemEntity>> = feedsDao.getFavoriteFeeds()
+    fun getFavoriteFeeds(): Flow<List<FeedLocalEntity>> = feedsDao.getFavoriteFeeds()
 
-    suspend fun insertTourism(feeds: List<FeedItemEntity>) = feedsDao.insertFeeds(feeds)
+    fun searchFeeds(query: String): Flow<List<FeedLocalEntity>> = feedsDao.searchFeeds(query)
 
-    fun setFavoriteFeed(feed: FeedItemEntity, isFavorited: Boolean) {
-        feed.isFavorite = isFavorited
+    fun getDetailFeed(idFeed: String): Flow<FeedLocalEntity> = feedsDao.getDetailFeeds(idFeed)
+
+    fun setFavoriteFeed(feed: FeedLocalEntity, isFavorite: Boolean) {
+        feed.isFavorite = isFavorite
         feedsDao.updateFavoriteFeeds(feed)
     }
+
+    suspend fun insertFeeds(feeds: List<FeedLocalEntity>) = feedsDao.insertFeeds(feeds)
 }

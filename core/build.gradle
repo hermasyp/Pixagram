@@ -38,6 +38,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidExtensions {
+        experimental = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -52,6 +62,7 @@ dependencies {
     implementation deps.support_lib.lifecycleExt
     implementation deps.scalable.ssp
     implementation deps.scalable.sdp
+    implementation deps.coil.coil
     implementation deps.koin.koin
     implementation deps.koin.koinViewModel
     implementation deps.koin.koinScope
@@ -60,6 +71,7 @@ dependencies {
     implementation deps.retrofit.retrofitGson
     implementation deps.retrofit.retrofitOkhttpLogging
     implementation deps.room.core
+    implementation deps.room.ktx
     implementation deps.coroutine.core
     implementation deps.coroutine.android
     implementation deps.android_test.junit

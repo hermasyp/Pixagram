@@ -1,7 +1,7 @@
 package com.catnip.core.data.source.remote.network
 
 import com.catnip.core.BuildConfig
-import com.catnip.core.data.source.remote.response.PixabayResponse
+import com.catnip.core.data.source.remote.entity.PixabayResponseEntity
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,16 +13,13 @@ interface ApiService {
     @GET("api")
     suspend fun getFeeds(
         @Query("key") key: String = BuildConfig.PIXABAY_KEY,
-        @Query("category") category: String,
-        @Query("page") page: Int,
         @Query("per_page") perPage: Int = 100
-    ): PixabayResponse
+    ): PixabayResponseEntity
 
     @GET("api")
     suspend fun searchFeeds(
         @Query("key") key: String = BuildConfig.PIXABAY_KEY,
         @Query("q") keywords: String,
-        @Query("page") page: Int,
         @Query("per_page") perPage: Int = 100
-    ): PixabayResponse
+    ): PixabayResponseEntity
 }

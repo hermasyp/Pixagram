@@ -21,7 +21,7 @@ versions.leanback = '1.0.0'
 versions.appcompat = '1.2.0'
 versions.glide = '4.9.0'
 versions.coil = '0.9.0'
-versions.android_plugin = '4.0.1'
+versions.android_plugin = '4.1.0'
 versions.multidex = '2.0.0'
 versions.google_services = '3.0.0'
 versions.design = '1.2.1'
@@ -44,6 +44,9 @@ versions.lifecycle = '2.2.0'
 versions.navigation = '2.3.0'
 versions.cardview = '1.0.0'
 versions.room = '2.2.5'
+versions.lifecycle = '2.2.0'
+versions.loupe_lib = '1.2.1'
+versions.loupe_ext = '1.0.0'
 
 
 //end of versions
@@ -56,6 +59,7 @@ deps.preferenceKtx = "androidx.preference:preference-ktx:$versions.coreKtx"
 deps.android_plugin = "com.android.tools.build:gradle:$versions.android_plugin"
 deps.multidex = "androidx.multidex:multidex:$versions.multidex"
 deps.google_services = "com.google.gms:google-services:$versions.google_services"
+deps.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
 
 def support_lib = [:]
 support_lib.material = "com.google.android.material:material:$versions.design"
@@ -84,6 +88,7 @@ deps.retrofit = retrofit
 
 def room = [:]
 room.core = "androidx.room:room-runtime:$versions.room"
+room.ktx = "androidx.room:room-ktx:$versions.room"
 room.roomKapt = "androidx.room:room-compiler:$versions.room"
 deps.room = room
 
@@ -98,6 +103,7 @@ navigation.fragment = "androidx.navigation:navigation-fragment:$versions.navigat
 navigation.ui = "androidx.navigation:navigation-ui:$versions.navigation"
 navigation.fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
 navigation.uiKtx = "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+navigation.dynamicmodule = "androidx.navigation:navigation-dynamic-features-fragment:$versions.navigation"
 deps.navigation = navigation
 
 def android_test = [:]
@@ -125,6 +131,11 @@ def scalable = [:]
 scalable.ssp = "com.intuit.ssp:ssp-android:$versions.scalable"
 scalable.sdp = "com.intuit.sdp:sdp-android:$versions.scalable"
 deps.scalable = scalable
+
+def loupe = [:]
+loupe.lib = "com.igreenwood.loupe:loupe:$versions.loupe_lib"
+loupe.ext = "com.igreenwood.loupe:extensions:$versions.loupe_ext"
+deps.loupe = loupe
 
 //end of dependencies
 ext.deps = deps

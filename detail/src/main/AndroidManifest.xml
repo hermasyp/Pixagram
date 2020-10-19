@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.catnip.detail">
+    <application>
+        <activity
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"
+            android:name=".ui.DetailFeedActivity" />
+    </application>
+</manifest>

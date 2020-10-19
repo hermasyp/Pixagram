@@ -10,6 +10,7 @@
         <item name="android:colorBackground">@color/backgroundColor</item>
         <item name="android:windowBackground">@color/backgroundColor</item>
         <item name="cardBackgroundColor">@color/cardBackgroundColor</item>
+        <item name="fontFamily">@font/pixagram_font</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -20,4 +21,6 @@
     <style name="AppTheme.DialogThemeTransparent" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
+
 </resources>

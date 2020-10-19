@@ -1,0 +1,9 @@
+<resources>
+    <string name="text_cd_profile_picture">Profile Picture</string>
+    <string name="text_cd_feed_image">Content Images</string>
+    <string name="text_cd_favorite">Set Favorite</string>
+    <string name="default_title_empty_state">No Data Available</string>
+    <string name="default_title_error_state">Error while fetching data</string>
+    <string name="default_message_error_state">Please try again later</string>
+    <string name="search_title">Search Feed by Tags</string>
+</resources>
