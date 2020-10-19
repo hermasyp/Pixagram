@@ -95,6 +95,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_favorite_feed"
+        app:layout_constraintTop_toBottomOf="@+id/iv_share_img"
         tools:text="Hermasyp #science #jokes #science #jokes " />
 </androidx.constraintlayout.widget.ConstraintLayout>

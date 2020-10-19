@@ -3,7 +3,8 @@
     package="com.catnip.search">
 
     <application>
-        <activity android:name=".ui.SearchFeedsActivity"></activity>
+        <activity
+            android:name=".ui.SearchFeedsActivity"></activity>
     </application>
 
 </manifest>

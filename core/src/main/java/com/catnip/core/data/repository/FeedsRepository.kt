@@ -12,7 +12,10 @@ import com.catnip.core.utils.AppExecutors
 import com.catnip.core.utils.DataMapper
 import com.catnip.core.utils.getCurrentDateTime
 import com.catnip.core.utils.toFormattedString
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 /**
 Written with love by Muhammad Hermas Yuda Pamungkas
@@ -71,20 +74,18 @@ class FeedsRepository(
         val response = remoteDataSource.getSearchFeeds(keywords)
         when (val apiResponse = response.first()) {
             is ApiResponse.Success -> {
-                emitAll(flow {
-                    apiResponse.data.map {
-                        Resource.Success(
-                            it
-                        )
-                    }
-                })
+                emit(
+                    Resource.Success(
+                        DataMapper.mapResponsesToViewParam(apiResponse.data)
+                    )
+                )
             }
             is ApiResponse.Empty -> {
-                emitAll(flow {
+                emit(
                     Resource.Success(
-                        listOf<FeedViewParam>()
+                        listOf()
                     )
-                })
+                )
             }
             is ApiResponse.Error -> {
                 emit(

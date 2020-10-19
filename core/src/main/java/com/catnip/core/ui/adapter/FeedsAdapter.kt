@@ -20,7 +20,10 @@ import java.util.*
 Written with love by Muhammad Hermas Yuda Pamungkas
 Github : https://github.com/hermasyp
  **/
-class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
+class FeedsAdapter(
+    private val callback: FeedsAdapterClickListener?,
+    private val isHasFavoriteFeature: Boolean = true
+) :
     RecyclerView.Adapter<FeedsAdapter.FeedsViewHolder>() {
 
     private var data: List<FeedViewParam> = ArrayList()
@@ -30,14 +33,15 @@ class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
             LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.item_feed, parent, false),
-            callback
+            callback,
+            isHasFavoriteFeature
         )
     }
 
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: FeedsViewHolder, position: Int) =
-        holder.bind(data[position],position)
+        holder.bind(data[position], position)
 
     fun swapData(data: List<FeedViewParam>) {
         this.data = data
@@ -50,7 +54,11 @@ class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
         notifyItemChanged(position)
     }
 
-    class FeedsViewHolder(itemView: View, val callback: FeedsAdapterClickListener?) :
+    class FeedsViewHolder(
+        itemView: View,
+        val callback: FeedsAdapterClickListener?,
+        val isHasFavoriteFeature: Boolean
+    ) :
         RecyclerView.ViewHolder(itemView) {
         fun bind(item: FeedViewParam, position: Int) = with(itemView) {
             iv_profile_icon.load(item.userImageURL) {
@@ -76,22 +84,27 @@ class FeedsAdapter(private val callback: FeedsAdapterClickListener?) :
             tv_feed_total_views.text = String.format("%s %s", item.views, "Views")
             tv_feed_hashtags.text = TextUtils.getTags(item.tags)
             tv_feed_hashtags.text = nameTagSpannable
-            iv_favorite_feed.setImageDrawable(
-                ContextCompat.getDrawable(
-                    itemView.context,
-                    if (item.isFavorite) R.drawable.ic_favorite_true
-                    else R.drawable.ic_favorite_false
+            if (isHasFavoriteFeature) {
+                iv_favorite_feed.visibility = View.VISIBLE
+                iv_favorite_feed.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        itemView.context,
+                        if (item.isFavorite) R.drawable.ic_favorite_true
+                        else R.drawable.ic_favorite_false
+                    )
                 )
-            )
+                iv_favorite_feed.setOnClickListener {
+                    callback?.onFavoriteIconClicked(item, position)
+                }
+            }else{
+                iv_favorite_feed.visibility = View.GONE
+            }
 
             iv_feed_image.setOnClickListener {
-                callback?.onItemClicked(item,position)
-            }
-            iv_favorite_feed.setOnClickListener {
-                callback?.onFavoriteIconClicked(item,position)
+                callback?.onItemClicked(item, position)
             }
             iv_share_img.setOnClickListener {
-                callback?.onShareClicked(item,position)
+                callback?.onShareClicked(item, position)
             }
         }
     }

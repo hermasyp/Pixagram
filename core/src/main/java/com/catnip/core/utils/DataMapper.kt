@@ -38,6 +38,35 @@ object DataMapper {
             )
         }
 
+    fun mapResponsesToViewParam(input: List<FeedResponseEntity>): List<FeedViewParam> =
+        input.map {
+            FeedViewParam(
+                id = it.id,
+                webformatWidth = it.webformatWidth,
+                webformatHeight = it.webformatHeight,
+                imageWidth = it.imageWidth,
+                favorites = it.favorites,
+                previewHeight = it.previewHeight,
+                webformatURL = it.webformatURL,
+                userImageURL = it.userImageURL,
+                previewURL = it.previewURL,
+                comments = it.comments,
+                type = it.type,
+                imageHeight = it.imageHeight,
+                tags = it.tags,
+                previewWidth = it.previewWidth,
+                downloads = it.downloads,
+                userId = it.userId,
+                largeImageURL = it.largeImageURL,
+                pageURL = it.pageURL,
+                imageSize = it.imageSize,
+                user = it.user,
+                views = it.views,
+                likes = it.likes,
+                isFavorite = false
+            )
+        }
+
     fun mapEntitiesToViewParams(input: List<FeedLocalEntity>): List<FeedViewParam> =
         input.map {
             FeedViewParam(

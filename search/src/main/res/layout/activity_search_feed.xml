@@ -5,5 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.SearchFeedsActivity">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_feeds"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_feed" />
 
+    <com.catnip.core.ui.widget.ContentStateView
+        android:id="@+id/csv_feeds"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

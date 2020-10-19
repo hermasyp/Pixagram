@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <string name="title_empty_initial_search">Search by typing in search field</string>
+    <string name="msg_empty_initial_search">Search result is based on Pixabay API result</string>
+    <string name="msg_empty_result_search">Please try another keywords</string>
+    <string name="title_empty_result_search">No Result for %s</string>
+</resources>
