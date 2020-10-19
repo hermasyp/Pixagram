@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.catnip.detail">
     <application>
-        <activity android:name=".ui.DetailFeedActivity" />
+        <activity
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"
+            android:name=".ui.DetailFeedActivity" />
     </application>
 </manifest>

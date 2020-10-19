@@ -45,6 +45,8 @@ versions.navigation = '2.3.0'
 versions.cardview = '1.0.0'
 versions.room = '2.2.5'
 versions.lifecycle = '2.2.0'
+versions.loupe_lib = '1.2.1'
+versions.loupe_ext = '1.0.0'
 
 
 //end of versions
@@ -129,6 +131,11 @@ def scalable = [:]
 scalable.ssp = "com.intuit.ssp:ssp-android:$versions.scalable"
 scalable.sdp = "com.intuit.sdp:sdp-android:$versions.scalable"
 deps.scalable = scalable
+
+def loupe = [:]
+loupe.lib = "com.igreenwood.loupe:loupe:$versions.loupe_lib"
+loupe.ext = "com.igreenwood.loupe:extensions:$versions.loupe_ext"
+deps.loupe = loupe
 
 //end of dependencies
 ext.deps = deps

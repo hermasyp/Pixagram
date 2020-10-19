@@ -1,10 +1,10 @@
 package com.catnip.feeds.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +13,7 @@ import com.catnip.core.domain.viewparam.FeedViewParam
 import com.catnip.core.ui.adapter.FeedsAdapter
 import com.catnip.core.ui.widget.ContentStateView
 import com.catnip.core.utils.ShareUtils
+import com.catnip.detail.ui.DetailFeedActivity
 import com.catnip.feeds.R
 import kotlinx.android.synthetic.main.fragment_feeds.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -71,8 +72,7 @@ class FeedsFragment : Fragment(), ContentStateView.ContentStateViewListener {
     private fun setupList() {
         feedsAdapter = FeedsAdapter(object : FeedsAdapter.FeedsAdapterClickListener {
             override fun onItemClicked(feed: FeedViewParam, position: Int) {
-                //todo : to detail
-                Toast.makeText(context, feed.id.toString(), Toast.LENGTH_SHORT).show()
+               DetailFeedActivity.startThisActivity(context,feed)
             }
 
             override fun onFavoriteIconClicked(feed: FeedViewParam, position: Int) {

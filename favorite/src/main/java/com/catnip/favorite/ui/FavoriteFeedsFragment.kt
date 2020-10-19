@@ -14,6 +14,7 @@ import com.catnip.core.ui.widget.ContentStateView
 import com.catnip.core.ui.widget.ContentStateViewConfig
 import com.catnip.core.ui.widget.ContentStateViewMessage
 import com.catnip.core.utils.ShareUtils
+import com.catnip.detail.ui.DetailFeedActivity
 import com.catnip.favorite.R
 import com.catnip.favorite.di.favoriteModule
 import kotlinx.android.synthetic.main.fragment_favorite_feeds.*
@@ -84,7 +85,7 @@ class FavoriteFeedsFragment : Fragment(), ContentStateView.ContentStateViewListe
     private fun setupList() {
         feedsAdapter = FeedsAdapter(object : FeedsAdapter.FeedsAdapterClickListener {
             override fun onItemClicked(feed: FeedViewParam, position: Int) {
-                Toast.makeText(context, feed.id, Toast.LENGTH_SHORT).show()
+                DetailFeedActivity.startThisActivity(context,feed)
             }
 
             override fun onFavoriteIconClicked(feed: FeedViewParam, position: Int) {

@@ -76,6 +76,7 @@ dependencies {
     implementation deps.livedata
     implementation project(path: ':core')
     implementation project(path: ':app')
+    implementation project(path: ':detail')
     androidTestImplementation deps.android_test.androidJunit
     androidTestImplementation deps.android_test.espressoCore
     kapt deps.room.roomKapt
