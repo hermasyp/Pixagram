@@ -47,6 +47,9 @@ versions.room = '2.2.5'
 versions.lifecycle = '2.2.0'
 versions.loupe_lib = '1.2.1'
 versions.loupe_ext = '1.0.0'
+versions.leakcanary = '2.4'
+versions.sqlchiper = '4.4.0'
+versions.sqlite = '2.1.0'
 
 
 //end of versions
@@ -136,6 +139,15 @@ def loupe = [:]
 loupe.lib = "com.igreenwood.loupe:loupe:$versions.loupe_lib"
 loupe.ext = "com.igreenwood.loupe:extensions:$versions.loupe_ext"
 deps.loupe = loupe
+
+def leakcanary = [:]
+leakcanary.lib = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+deps.leakcanary = leakcanary
+
+def sqlchiper = [:]
+sqlchiper.lib = "net.zetetic:android-database-sqlcipher:$versions.sqlchiper"
+sqlchiper.sqlite = "androidx.sqlite:sqlite:$versions.sqlite"
+deps.sqlchiper = sqlchiper
 
 //end of dependencies
 ext.deps = deps

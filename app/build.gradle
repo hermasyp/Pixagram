@@ -82,6 +82,7 @@ dependencies {
     implementation project(path: ':search')
     androidTestImplementation deps.android_test.androidJunit
     androidTestImplementation deps.android_test.espressoCore
+    debugImplementation deps.leakcanary.lib
     kapt deps.room.roomKapt
 
 }
