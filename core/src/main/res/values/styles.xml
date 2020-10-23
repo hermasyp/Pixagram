@@ -24,7 +24,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/md_grey_900</item>
         <item name="android:textColorSecondary">@android:color/white</item>
     </style>
 
