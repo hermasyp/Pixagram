@@ -11,5 +11,5 @@ Github : https://github.com/hermasyp
 
 
 val detailFeedModule = module {
-    viewModel { DetailViewModel(get()) }
+    viewModel { DetailViewModel() }
 }

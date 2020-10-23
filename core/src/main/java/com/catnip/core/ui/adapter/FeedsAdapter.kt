@@ -48,16 +48,10 @@ class FeedsAdapter(
         notifyDataSetChanged()
     }
 
-    fun setFavorite(position: Int) {
-        val selectedData = data[position]
-        data[position].isFavorite = !selectedData.isFavorite
-        notifyItemChanged(position)
-    }
-
     class FeedsViewHolder(
         itemView: View,
-        val callback: FeedsAdapterClickListener?,
-        val isHasFavoriteFeature: Boolean
+        private val callback: FeedsAdapterClickListener?,
+        private val isHasFavoriteFeature: Boolean
     ) :
         RecyclerView.ViewHolder(itemView) {
         fun bind(item: FeedViewParam, position: Int) = with(itemView) {

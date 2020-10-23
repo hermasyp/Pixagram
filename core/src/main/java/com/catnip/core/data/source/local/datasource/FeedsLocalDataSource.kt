@@ -13,8 +13,6 @@ class FeedsLocalDataSource(private val feedsDao: FeedsDao) {
 
     fun getFavoriteFeeds(): Flow<List<FeedLocalEntity>> = feedsDao.getFavoriteFeeds()
 
-    fun searchFeeds(query: String): Flow<List<FeedLocalEntity>> = feedsDao.searchFeeds(query)
-
     fun getDetailFeed(idFeed: String): Flow<FeedLocalEntity> = feedsDao.getDetailFeeds(idFeed)
 
     fun setFavoriteFeed(feed: FeedLocalEntity, isFavorite: Boolean) {

@@ -45,7 +45,8 @@
             android:src="@drawable/ic_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/cd_search_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </Toolbar>

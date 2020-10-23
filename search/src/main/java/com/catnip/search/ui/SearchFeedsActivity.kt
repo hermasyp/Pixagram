@@ -1,5 +1,6 @@
 package com.catnip.search.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.ActionBar
@@ -34,13 +35,14 @@ class SearchFeedsActivity : AppCompatActivity(), ContentStateView.ContentStateVi
         setupList()
     }
 
+    @SuppressLint("InflateParams")
     private fun setupToolbar() {
         val actionBar: ActionBar? = supportActionBar
         actionBar?.setDisplayShowCustomEnabled(true)
         actionBar?.setDisplayShowTitleEnabled(false)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
-        val customView: View = layoutInflater.inflate(R.layout.layout_toolbar_search, null)
+        val customView: View = layoutInflater.inflate(R.layout.layout_toolbar_search,null )
         actionBar?.customView = customView
         val parent: Toolbar = customView.parent as Toolbar
         parent.setContentInsetsAbsolute(0, 0)
