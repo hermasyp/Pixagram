@@ -8,7 +8,7 @@ import com.catnip.core.data.source.local.entity.FeedLocalEntity
 Written with love by Muhammad Hermas Yuda Pamungkas
 Github : https://github.com/hermasyp
  **/
-@Database(entities = [FeedLocalEntity::class], version = 1, exportSchema = false)
+@Database(entities = [FeedLocalEntity::class], version = 2, exportSchema = false)
 abstract class FeedsDatabase : RoomDatabase() {
     abstract fun feedsDao(): FeedsDao
 }

@@ -3,13 +3,9 @@ package com.catnip.detail.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import coil.load
 import coil.request.ImageRequest
 import coil.request.ImageResult

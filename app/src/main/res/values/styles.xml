@@ -13,14 +13,4 @@
         <item name="fontFamily">@font/pixagram_font</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.DialogThemeTransparent" parent="Theme.AppCompat.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-    </style>
-
-
 </resources>

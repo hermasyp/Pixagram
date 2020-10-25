@@ -20,8 +20,9 @@
             android:id="@+id/sv_feeds"
             app:searchHintIcon="@null"
             app:searchIcon="@null"
+            android:layout_margin="0dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:theme="@style/Pixabay.SearchView"
             app:iconifiedByDefault="false" />
 
