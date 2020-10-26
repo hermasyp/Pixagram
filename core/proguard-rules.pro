@@ -56,13 +56,3 @@
 -keep,includedescriptorclasses class net.sqlcipher.** { *; }
 -keep,includedescriptorclasses interface net.sqlcipher.** { *; }
 ######### SQLCHIPER PROGUARD END ##########
-
--dontwarn android.arch.util.paging.CountedDataSource
--dontwarn android.arch.persistence.room.paging.LimitOffsetDataSource
-
--dontwarn com.google.android.material.**
--keep class com.google.android.material.** { *; }
-
--dontwarn androidx.**
--keep class androidx.** { ; }
--keep interface androidx.* { *; }
