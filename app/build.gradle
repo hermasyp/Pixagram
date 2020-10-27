@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     signingConfigs {
         catnipdev {
-            storeFile file('/Users/stark/Documents/Development/Catnip Dev/Pixagram Key/pixagram-key')
+            storeFile file('../pixagram-key')
             storePassword 'nematoda96'
             keyAlias 'catnipdev'
             keyPassword 'nematoda96'
