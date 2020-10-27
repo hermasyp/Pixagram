@@ -78,12 +78,12 @@ dependencies {
     implementation deps.coil.coil
     implementation deps.coroutine.core
     implementation deps.coroutine.android
-    implementation deps.android_test.junit
     implementation deps.livedata
     implementation project(path: ':core')
     implementation project(path: ':detail')
     implementation project(path: ':feeds')
     implementation project(path: ':search')
+    testImplementation deps.android_test.junit
     androidTestImplementation deps.android_test.androidJunit
     androidTestImplementation deps.android_test.espressoCore
     debugImplementation deps.leakcanary.lib
