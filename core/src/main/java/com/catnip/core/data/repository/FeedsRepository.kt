@@ -82,14 +82,14 @@ class FeedsRepository(
             }
             is ApiResponse.Empty -> {
                 emit(
-                    Resource.Success(
+                    Resource.Success<List<FeedViewParam>>(
                         listOf()
                     )
                 )
             }
             is ApiResponse.Error -> {
                 emit(
-                    Resource.Error(
+                    Resource.Error<List<FeedViewParam>>(
                         apiResponse.errorMessage
                     )
                 )

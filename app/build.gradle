@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        catnipdev {
+            storeFile file('/Users/stark/Documents/Development/Catnip Dev/Pixagram Key/pixagram-key')
+            storePassword 'nematoda96'
+            keyAlias 'catnipdev'
+            keyPassword 'nematoda96'
+        }
+    }
     compileSdkVersion app.compileSdk
     buildToolsVersion app.buildToolsVersion
 
@@ -14,6 +22,7 @@ android {
         versionCode app.appVersionCode
         versionName app.appVersionName
         testInstrumentationRunner app.testRunner
+        signingConfig signingConfigs.catnipdev
     }
     flavorDimensions 'default'
     productFlavors {
