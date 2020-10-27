@@ -56,4 +56,4 @@
 -keep,includedescriptorclasses class net.sqlcipher.** { *; }
 -keep,includedescriptorclasses interface net.sqlcipher.** { *; }
 ######### SQLCHIPER PROGUARD END ##########
--dontwarn org.codehaus.mojo.animal_sniffer.*
+
