@@ -1,6 +1,7 @@
 package com.catnip.pixagram.app
 
 import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.catnip.core.di.databaseModule
 import com.catnip.core.di.networkModule
 import com.catnip.core.di.repositoryModule
@@ -16,7 +17,7 @@ import org.koin.core.context.startKoin
 Written with love by Muhammad Hermas Yuda Pamungkas
 Github : https://github.com/hermasyp
  **/
-class PixagramApp : Application() {
+class PixagramApp : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()

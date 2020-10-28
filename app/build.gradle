@@ -23,6 +23,8 @@ android {
         versionName app.appVersionName
         testInstrumentationRunner app.testRunner
         signingConfig signingConfigs.catnipdev
+        multiDexEnabled true
+
     }
     flavorDimensions 'default'
     productFlavors {
@@ -97,5 +99,7 @@ dependencies {
     androidTestImplementation deps.android_test.espressoCore
     debugImplementation deps.leakcanary.lib
     kapt deps.room.roomKapt
+    implementation 'com.android.support:multidex:1.0.3'
+
 
 }
